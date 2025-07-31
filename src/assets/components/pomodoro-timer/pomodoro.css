@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+.pomodoro button{
+  @apply mx-5 border border-solid border-black p-2 rounded-lg
+}
+
+.pomodoro{
+    @apply text-center
+}
+
+.time-display{
+    @apply text-8xl p-5 bg-yellow-100 
+}

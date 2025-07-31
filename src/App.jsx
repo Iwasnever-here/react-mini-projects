@@ -1,35 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import Pomodoro from './assets/components/pomodoro-timer/pomodoro'; 
+import './App.css';
+import { FaReact } from "react-icons/fa6";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <BrowserRouter>
+      <nav className="">
+        <div className="h-10 items-center flex justify-between bg-yellow-200">
+          <div className="text-3xl text-zinc-950 font-bold px-2"><FaReact /></div>
+          <div className="">
+            <Link to="/" className="text-zinc-950 text-lg px-5">Home</Link>
+          </div>
+
+
+        
+        </div>
+      </nav>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/pomodoro" element={<Pomodoro />} />
+      </Routes>
+
+    </BrowserRouter>
+    
+  );
 }
 
-export default App
+function Home() {
+  return(
+  <div >
+    <h1>components:</h1>
+    <div><Link to="/pomodoro" className="text-zinc-950 text-lg px-5">Pomodoro Timer</Link></div>
+  </div>)
+}
+
+export default App;
