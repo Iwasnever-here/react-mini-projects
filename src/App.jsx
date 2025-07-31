@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import Pomodoro from './assets/components/pomodoro-timer/pomodoro'; 
+import Pomodoro from './components/pomodoro-timer/pomodoro'; 
 import './App.css';
 import { FaReact } from "react-icons/fa6";
 
