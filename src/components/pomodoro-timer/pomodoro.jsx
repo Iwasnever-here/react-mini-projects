@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import './pomodoro.css';
+import { FaPlay, FaPause } from "react-icons/fa";
 
 const Pomodoro = () => {
 
@@ -12,6 +13,7 @@ const Pomodoro = () => {
   const [state, setState] = useState('pomodoro');
   const [timeLeft, setTimeLeft] = useState(DURATIONS['pomodoro']); // 25 minutes
   const intervalRef = useRef(null);
+  const alarmSound = new Audio('/timesup.mp3')
 
   const switchMode = (mode) => {
     setState(mode);
@@ -24,11 +26,13 @@ const Pomodoro = () => {
 
     intervalRef.current = setInterval(() => {
       setTimeLeft((prevTime) => {
-        if (prevTime === 0) {
-          clearInterval(intervalRef.current);
-          intervalRef.current = null;
-          return 0;
-        }
+        if (prevTime == 0) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
+
+        alarmSound.play();
+        return 0;
+      }
         return prevTime - 1;
       });
     }, 1000);
@@ -41,15 +45,16 @@ const Pomodoro = () => {
     }
   };
 
+
   
 
   return (
     <div className="main min-h-screen flex items-center justify-center bg-red-200">
     <div className="pomodoro">
         <div className='top-section'>
-            <button onClick={() => switchMode('pomodoro')}>Pomodoro</button>
-            <button onClick={() => switchMode('shortBreak')}>Short Break</button>
-            <button onClick={() => switchMode('longBreak')}>Long Break</button>
+            <button className = 'bg-pomodorored' onClick={() => switchMode('pomodoro')}>Pomodoro</button>
+            <button className = 'bg-pomodorored' onClick={() => switchMode('shortBreak')}>Short Break</button>
+            <button className = 'bg-pomodorored' onClick={() => switchMode('longBreak')}>Long Break</button>
         </div>
 
         <div className="time-display">
@@ -60,8 +65,8 @@ const Pomodoro = () => {
 
 
         <div className='bottom-section'>
-            <button onClick={startTimer}>Start</button>
-            <button onClick={stopTimer}>Stop</button>
+            <button className='bg-pomodorogreen' onClick={startTimer}><FaPlay /></button>
+            <button className = 'bg-pomodorored2' onClick={stopTimer}><FaPause /></button>
         </div>
     </div>
     </div>
