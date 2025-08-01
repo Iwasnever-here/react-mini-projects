@@ -9,7 +9,6 @@ const Pomodoro = () => {
     longBreak: 900
   }
 
-
   const [state, setState] = useState('pomodoro');
   const [timeLeft, setTimeLeft] = useState(DURATIONS['pomodoro']); // 25 minutes
   const intervalRef = useRef(null);
@@ -19,6 +18,7 @@ const Pomodoro = () => {
     setTimeLeft(DURATIONS[mode]);
     stopTimer();
   }
+
   const startTimer = () => {
     if (intervalRef.current !== null) return; 
 
@@ -44,6 +44,7 @@ const Pomodoro = () => {
   
 
   return (
+    <div className="main min-h-screen flex items-center justify-center bg-red-200">
     <div className="pomodoro">
         <div className='top-section'>
             <button onClick={() => switchMode('pomodoro')}>Pomodoro</button>
@@ -62,6 +63,7 @@ const Pomodoro = () => {
             <button onClick={startTimer}>Start</button>
             <button onClick={stopTimer}>Stop</button>
         </div>
+    </div>
     </div>
   );
 };

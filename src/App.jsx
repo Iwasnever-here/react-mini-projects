@@ -11,7 +11,7 @@ function App() {
   return (
     <BrowserRouter>
       <nav className="">
-        <div className="h-10 items-center flex justify-between bg-yellow-200">
+        <div className="h-10 items-center flex justify-between">
           <div className="text-3xl text-zinc-950 font-bold px-2"><FaReact /></div>
           <div className="">
             <Link to="/" className="text-zinc-950 text-lg px-5">Home</Link>
