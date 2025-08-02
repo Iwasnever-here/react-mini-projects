@@ -30,7 +30,7 @@
 }
 
 .main-display {
-    @apply bg-onyx p-4 rounded-3xl mb-6
+    @apply bg-onyx p-4 rounded-3xl mb-6 shadow shadow-white
 }
 
 .time-display{
