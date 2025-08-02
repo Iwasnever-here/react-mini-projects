@@ -1,0 +1,61 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=ZCOOL+QingKe+HuangYou&display=swap');
+
+@theme{
+    --color-onyx: #353839;
+    --color-shadows: #A6A6A6;
+    --font-display2: "ZCOOL QingKe HuangYou", 'system-ui';
+}
+
+.toggle-container {
+    @apply flex absolute right-0 mt-1 gap-1 mr-6 mt-10 
+}
+
+.toggle-switch {
+  @apply w-28 h-15 rounded-full relative cursor-pointer transition-colors duration-600 bg-onyx shadow shadow-onyx
+}
+
+
+
+.toggle-thumb {
+  @apply w-13 h-13 bg-red-500 rounded-full absolute mt-1 ml-1 transition-transform duration-600 
+}
+
+.toggle-switch.on .toggle-thumb {
+  @apply translate-x-13
+}
+
+.box{
+    @apply bg-shadows p-6 h-80 min-w-80 rounded-4xl relative font-display2 font-bold text-xl shadow-xs shadow-white
+}
+
+.main-display {
+    @apply bg-onyx p-4 rounded-3xl mb-6
+}
+
+.time-display{
+    @apply text-5xl text-center text-white
+}
+
+.quick-sets {
+    @apply absolute grid grid-cols-2 gap-3
+}
+
+.quick-sets button {
+    @apply bg-white rounded-full w-12 h-12 shadow shadow-black
+}
+
+
+
+/*slider controls */
+input[type='range'] {
+  -webkit-appearance: none;
+  cursor: pointer;
+  @apply h-[6px] bg-red-500 rounded-full
+}
+
+
+input[type='range']::-moz-range-thumb {
+    @apply h-[16px] w-[16px] rounded-full bg-shadows border-onyx
+ 
+}

@@ -9,15 +9,14 @@
   @apply font-display
 }
 
+
 @theme{
   --color-pomodorored: #e87272;
   --color-pomodorored2: #cd2626;
   --color-pomodorogreen: #719d57;
   --font-display: "DynaPuff", 'system-ui';
 }
-body{
-  @apply bg-pomodorored
-}
+
 .pomodoro button{
   @apply mx-5  p-2 rounded-3xl 
 }

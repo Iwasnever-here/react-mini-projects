@@ -1,17 +1,32 @@
 import { useState } from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
 import Pomodoro from './components/pomodoro-timer/pomodoro'; 
 import Timer from './components/timer/timer'; 
 import './App.css';
 import { FaReact } from "react-icons/fa6";
 
 function App() {
-  const [count, setCount] = useState(0);
-  const [isOpen, setIsOpen] = useState(false);
-
   return (
     <BrowserRouter>
-      <nav className="">
+    <MainLayout />
+    </BrowserRouter>
+  )
+
+  function MainLayout () {
+    const location = useLocation() 
+
+    const routeColorMap ={
+      '/': 'bg-white',
+      '/pomodoro': 'bg-pomodorored',
+      '/timer': 'bg-onyx',
+    }
+
+    const navColor = routeColorMap[location.pathname] || 'bg-gray-100';
+
+
+      return (
+    <>
+      <nav className={`${navColor}`}>
         <div className="h-10 items-center flex justify-between">
           <div className="text-3xl text-zinc-950 font-bold px-2"><FaReact /></div>
           <div className="">
@@ -29,9 +44,14 @@ function App() {
         <Route path = "/timer" element={<Timer />} />
       </Routes>
 
-    </BrowserRouter>
+    </>
     
   );
+  }
+ 
+  
+
+
 }
 
 function Home() {
