@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import Pomodoro from './components/pomodoro-timer/pomodoro'; 
+import Timer from './components/timer/timer'; 
 import './App.css';
 import { FaReact } from "react-icons/fa6";
 
@@ -25,6 +26,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/pomodoro" element={<Pomodoro />} />
+        <Route path = "/timer" element={<Timer />} />
       </Routes>
 
     </BrowserRouter>
@@ -37,6 +39,7 @@ function Home() {
   <div >
     <h1>components:</h1>
     <div><Link to="/pomodoro" className="text-zinc-950 text-lg px-5">Pomodoro Timer</Link></div>
+    <div><Link to="/timer" className="text-zinc-950 text-lg px-5">Timer</Link></div>
   </div>)
 }
 
