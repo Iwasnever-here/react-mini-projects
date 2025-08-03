@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
 import Pomodoro from './components/pomodoro-timer/pomodoro'; 
-import Timer from './components/timer/timer'; 
+import Timer from './components/timer/timer';
+import CrayolaColors from './components/crayola-colors/crayolaColors'; 
 import './App.css';
 import { FaReact } from "react-icons/fa6";
 
@@ -19,6 +20,7 @@ function App() {
       '/': 'bg-white',
       '/pomodoro': 'bg-pomodorored',
       '/timer': 'bg-onyx',
+      '/crayola': 'bg-red-500'
     }
 
     const navColor = routeColorMap[location.pathname] || 'bg-gray-100';
@@ -42,6 +44,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/pomodoro" element={<Pomodoro />} />
         <Route path = "/timer" element={<Timer />} />
+        <Route path = "/crayola" element={<CrayolaColors />} />
       </Routes>
 
     </>
@@ -60,6 +63,7 @@ function Home() {
     <h1>components:</h1>
     <div><Link to="/pomodoro" className="text-zinc-950 text-lg px-5">Pomodoro Timer</Link></div>
     <div><Link to="/timer" className="text-zinc-950 text-lg px-5">Timer</Link></div>
+    <div><Link to="/crayola" className="text-zinc-950 text-lg px-5">Crayola Colors</Link></div>
   </div>)
 }
 

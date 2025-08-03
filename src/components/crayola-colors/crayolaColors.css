@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+.colorgrid {
+  @apply grid grid-cols-19 gap-2 border p-4 rounded-lg;
+}
+
+.dropgrid {
+  @apply grid grid-cols-10 gap-2 border-2 border-dashed p-4 min-h-[100px] rounded-lg;
+}
+
+.colortile {
+  @apply h-14 w-full rounded-md transition-shadow hover:shadow-md;
+}
