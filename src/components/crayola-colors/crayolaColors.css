@@ -1,13 +1,20 @@
 @import "tailwindcss";
 
-.colorgrid {
-  @apply grid grid-cols-19 gap-2 border p-4 rounded-lg;
+body{
+    @apply bg-yellow-400
 }
-
-.dropgrid {
-  @apply grid grid-cols-10 gap-2 border-2 border-dashed p-4 min-h-[100px] rounded-lg;
+.colorgrid{
+    @apply grid grid-cols-19 gap-1 bg-red-100 p-5 rounded-lg
 }
 
 .colortile {
-  @apply h-14 w-full rounded-md transition-shadow hover:shadow-md;
+    @apply aspect-square w-full rounded-full
+}
+
+.palletgrid{
+    @apply bg-green-400 absolute right-20 xl:right-80 p-4  gap-4 grid grid-cols-3 rounded-xl
+}
+
+.palletgrid li {
+    @apply bg-red-100 rounded-lg h-30 w-20 text-center
 }

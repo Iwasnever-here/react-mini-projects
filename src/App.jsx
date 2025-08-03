@@ -28,7 +28,7 @@ function App() {
 
       return (
     <>
-      <nav className={`${navColor}`}>
+      <nav className={`${navColor} z-20`}>
         <div className="h-10 items-center flex justify-between">
           <div className="text-3xl text-zinc-950 font-bold px-2"><FaReact /></div>
           <div className="">
