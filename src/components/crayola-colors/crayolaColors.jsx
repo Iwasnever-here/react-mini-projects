@@ -4,34 +4,55 @@ import './crayolaColors.css';
 
 const CrayolaColors = () => {
   const [selectedColor, setSelectedColor] = useState(null);
+  const [copiedSlot, setCopiedSlot] = useState(null);
+
 
   const [palette, setPalette] = useState({
-    main: '',
-    second: '',
-    third: '',
+    main: { name: '', hex: '' },
+    second: { name: '', hex: '' },
+    third: { name: '', hex: '' },
   })
   const handleSelectedColor = (color) => {
     setSelectedColor(color);
     console.log("Selected:", color.name);
   };
 
-  const handleColorPaint = (slot) => {
-    if (selectedColor) {
-      setPalette(prev => ({
-        ...prev,
-        [slot]: selectedColor.hex
-      })) 
-      setSelectedColor(null);
-    }
+const handleColorPaint = (slot) => {
+  const slotData = palette[slot];
+
+  if (selectedColor) {
+    
+    setPalette(prev => ({
+      ...prev,
+      [slot]: {
+        name: selectedColor.name,
+        hex: selectedColor.hex
+      }
+    }));
+    setSelectedColor(null);
+  } else if (slotData.hex) {
+    
+    navigator.clipboard.writeText(slotData.hex).then(() => {
+      setCopiedSlot(slot);
+      setTimeout(() => setCopiedSlot(null), 1500); 
+    });
   }
+};
+
 
 
   return (
-    <div>
-      <h1 className='text-center mt-10 text-3xl text-green-600'>Crayola</h1>
-      <h1 className=' text-center mt-5 text-3xl text-red-500'>COLORS</h1>
+    <div className='pb-60 bg-yellow-400'>
+  
+      <div className="heading-wrapper relative flex flex-col items-center mt-10 flex">
+      <div className="semicircle-bg absolute">
+      </div>
+        <img src = './crayola.png' className='z-20 w-150'/>
+      <h1 className='mt-0 font-display3 text-center text-8xl text-red-500 relative z-10 mt-2'>COLORS</h1>
 
-      <div className='bg-green-400 p-4 mx-20 xl:mx-80 rounded-xl shadow mt-15'>
+    </div>
+
+      <div className='bg-green-400 p-4  mx-20 xl:mx-80 rounded-xl shadow mt-5'>
         <ul className='colorgrid'>
           {colors.map((color) => (
             <li
@@ -45,25 +66,38 @@ const CrayolaColors = () => {
         </ul>
       </div>
 
-      <div className='relative pt-10'>
-        <h1 className='text-2xl absolute mr-70 xl:mr-130' style={{ right: '10rem', top: '4rem' }}>
+      <div className='relative pt-10 pb-20'>
+        <h1 className='font-display3 text-4xl absolute mr-70 xl:mr-130 text-red-500' style={{ right: '10rem', top: '4rem' }}>
           Color Palette:
         </h1>
         <div>
           <ul className='palletgrid'>
             <li
-            style={{ backgroundColor: palette.main }}
+              style={{ backgroundColor: palette.main.hex }}
               onClick={() => handleColorPaint('main')}
-              >main</li>
+            >
+              {copiedSlot === 'main'
+                ? 'Copied!'
+                : palette.main.name }
+            </li>
             <li
-            style={{ backgroundColor: palette.second }}
+              style={{ backgroundColor: palette.second.hex }}
               onClick={() => handleColorPaint('second')}
-              >Second</li>
+            >
+              {copiedSlot === 'second'
+                ? 'Copied!'
+                : palette.second.name}
+            </li>
             <li
-            style={{ backgroundColor: palette.third }}
+              style={{ backgroundColor: palette.third.hex }}
               onClick={() => handleColorPaint('third')}
-              >Third</li>
+            >
+              {copiedSlot === 'third'
+                ? 'Copied!'
+                : palette.third.name}
+            </li>
           </ul>
+
         </div>
       </div>
     </div>

@@ -1,10 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&display=swap');
 @import "tailwindcss";
 
-body{
-    @apply bg-yellow-400
+@theme{
+    --font-display3: "Gaegu", 'system-ui';
 }
+
+
 .colorgrid{
-    @apply grid grid-cols-19 gap-1 bg-red-100 p-5 rounded-lg
+    @apply grid grid-cols-19 gap-1 bg-green-800 p-5 rounded-lg
 }
 
 .colortile {
@@ -12,9 +15,19 @@ body{
 }
 
 .palletgrid{
-    @apply bg-green-400 absolute right-20 xl:right-80 p-4  gap-4 grid grid-cols-3 rounded-xl
+    @apply bg-green-400 absolute right-20 xl:right-80 p-4  gap-4 grid grid-cols-3 rounded-xl 
 }
 
 .palletgrid li {
-    @apply bg-red-100 rounded-lg h-30 w-20 text-center
+    @apply bg-red-100 rounded-lg h-30 w-20 text-center 
+}
+
+
+.heading-wrapper {
+  
+  @apply relative m-auto mb-10
+}
+
+.semicircle-bg {
+  @apply absolute z-0 top-0 content-center  w-170 h-70 bg-yellow-400 rounded-b-full border border-solid border-yellow-500 border-b-10 border-l-10 border-r-10 border-t-0
 }

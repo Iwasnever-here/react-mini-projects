@@ -20,7 +20,7 @@ function App() {
       '/': 'bg-white',
       '/pomodoro': 'bg-pomodorored',
       '/timer': 'bg-onyx',
-      '/crayola': 'bg-red-500'
+      '/crayola': 'bg-yellow-400'
     }
 
     const navColor = routeColorMap[location.pathname] || 'bg-gray-100';
