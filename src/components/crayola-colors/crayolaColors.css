@@ -7,19 +7,30 @@
 
 
 .colorgrid{
-    @apply grid grid-cols-19 gap-1 bg-green-800 p-5 rounded-lg
+    @apply grid grid-cols-19 gap-1 bg-green-800 p-5 rounded-lg shadow shadow-white
 }
 
 .colortile {
-    @apply aspect-square w-full rounded-full
+    @apply relative aspect-square w-full rounded-full cursor-pointer hover:scale-103 flex items-center justify-center shadow shadow-black;
+  
 }
 
+/*::after inserts this smaller div ontop of the crayon*/
+.colortile::after {
+    content: '';
+    background-color: rgba(0, 0, 0, 0.1); 
+    box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.1);
+    @apply w-[40%] h-[40%] rounded-full 
+
+}
+
+
 .palletgrid{
-    @apply bg-green-400 absolute right-20 xl:right-80 p-4  gap-4 grid grid-cols-3 rounded-xl 
+    @apply bg-green-400 absolute right-20 xl:right-80 p-4  gap-4 grid grid-cols-3 rounded-xl shadow shadow-black 
 }
 
 .palletgrid li {
-    @apply bg-red-100 rounded-lg h-30 w-20 text-center 
+    @apply bg-red-100 rounded-lg h-30 w-20 text-center shadow shadow-black
 }
 
 
@@ -31,3 +42,5 @@
 .semicircle-bg {
   @apply absolute z-0 top-0 content-center  w-170 h-70 bg-yellow-400 rounded-b-full border border-solid border-yellow-500 border-b-10 border-l-10 border-r-10 border-t-0
 }
+
+
