@@ -1,0 +1,16 @@
+@import 'tailwindcss';
+
+@theme {
+    --color-wisteria: #CDA4DE;
+    --color-cornflower: #9ACEEB;
+    --color-bananamania: #FAE7B5;
+}
+
+.tile {
+    @apply h-20 rounded-lg bg-red-200
+}
+
+.top-section {
+    @apply bg-wisteria h-90 rounded-lg p-4 grid grid-cols-2 items-end shadow shadow-wisteria
+    text-xl text-white
+}
