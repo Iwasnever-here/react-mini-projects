@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './HangMan.css';
-import { TbRuler2 } from 'react-icons/tb';
+
 
 const HangMan = () => {
     const alphabet = Array.from({length: 26}, (_, i) =>
@@ -69,7 +69,7 @@ const HangMan = () => {
         <p className="text-lg mb-6">THE WORD WAS: <strong>{wordSelected}</strong></p>
         <button
           onClick={resetGame}
-          className="bg-blueyonder hover:bg-almond text-white hover:text-outerspace font-bold py-2 px-6 rounded"
+          className="hover:bg-blueyonder bg-almond hover:text-white text-outerspace font-bold py-2 px-6 rounded"
         >
           Play Again
         </button>
@@ -81,7 +81,7 @@ const HangMan = () => {
         <p className="text-lg mb-6">THE WORD WAS: <strong>{wordSelected}</strong></p>
         <button
           onClick={resetGame}
-          className="bg-blueyonder hover:bg-almond text-white hover:text-outerspace font-bold py-2 px-6 rounded"
+          className="hover:bg-blueyonder bg-almond hover:text-white text-outerspace font-bold py-2 px-6 rounded"
         >
           Play Again
         </button>

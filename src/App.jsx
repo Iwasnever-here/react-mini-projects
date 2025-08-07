@@ -6,6 +6,7 @@ import CrayolaColors from './components/crayola-colors/crayolaColors';
 import './App.css';
 import { FaReact } from "react-icons/fa6";
 import HangMan from './components/hang-man/HangMan';
+import WeatherDash from './components/weather-dashboard/WeatherDash';
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
         <Route path = "/timer" element={<Timer />} />
         <Route path = "/crayola" element={<CrayolaColors />} />
         <Route path = "/hangman" element = {<HangMan />} />
+        <Route path = "/weather" element = {<WeatherDash />} />
       </Routes>
 
     </>
@@ -68,6 +70,7 @@ function Home() {
     <div><Link to="/timer" className="text-zinc-950 text-lg px-5">Timer</Link></div>
     <div><Link to="/crayola" className="text-zinc-950 text-lg px-5">Crayola Colors</Link></div>
     <div><Link to="/hangman" className="text-zinc-950 text-lg px-5">Hang Man</Link></div>
+    <div><Link to="/weather" className="text-zinc-950 text-lg px-5">Weather Dashboard</Link></div>
   </div>)
 }
 
