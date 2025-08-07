@@ -21,7 +21,8 @@ function App() {
       '/': 'bg-white',
       '/pomodoro': 'bg-pomodorored',
       '/timer': 'bg-onyx',
-      '/crayola': 'bg-yellow-400'
+      '/crayola': 'bg-yellow-400',
+      '/hangman' : 'bg-outerspace'
     }
 
     const navColor = routeColorMap[location.pathname] || 'bg-gray-100';

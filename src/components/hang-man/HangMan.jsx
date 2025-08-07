@@ -88,8 +88,7 @@ const HangMan = () => {
       </div>
     ) : (
       // game screen
-      <div className='bg-outerspace pb-60'>
-      <h1>HANGMAN!!</h1>
+      <div className='bg-outerspace pb-20 pt-10'>
       <div>
         <div className='flex justify-center'>
         <div className='h-100 w-70 '>
@@ -99,7 +98,7 @@ const HangMan = () => {
         </div>
     </div>
         <div>
-            <ul className='flex gap-3 justify-center mb-16'>
+            <ul className='flex gap-3 justify-center m-16'>
                 {wordSelected.split('').map((character, index) => (
             <li
               key={index}
