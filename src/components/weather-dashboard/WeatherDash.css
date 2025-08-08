@@ -4,13 +4,22 @@
     --color-wisteria: #CDA4DE;
     --color-cornflower: #9ACEEB;
     --color-bananamania: #FAE7B5;
+    --color-violetblue: #324AB2;
 }
 
 .tile {
-    @apply h-20 rounded-lg bg-red-200
+    @apply h-20 rounded-xl bg-bananamania border border-violetblue pl-4 p-3 flex items-center grid grid-cols-2 text-violetblue
 }
 
-.top-section {
-    @apply bg-wisteria h-90 rounded-lg p-4 grid grid-cols-2 items-end shadow shadow-wisteria
-    text-xl text-white
+.top-section2 {
+    @apply bg-violetblue h-90 rounded-xl p-4 grid grid-cols-2 items-end shadow shadow-cornflower shadow-md
+    text-xl text-white mb-10
+}
+
+.hour-tile {
+    @apply h-25 px-10 bg-cornflower rounded-lg
+}
+
+.hourly-container {
+    @apply flex overflow-x-auto scroll-smooth gap-1 text-violetblue ml-3
 }
