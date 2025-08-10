@@ -17,9 +17,9 @@
 }
 
 .hour-tile {
-    @apply h-25 px-10 bg-cornflower rounded-lg
+    @apply h-25 px-10 bg-violetblue rounded-lg
 }
 
 .hourly-container {
-    @apply flex overflow-x-auto scroll-smooth gap-1 text-violetblue ml-3
+    @apply flex overflow-x-auto scroll-smooth gap-1 text-cornflower ml-3
 }

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './WeatherDash.css';
 import { IoMdSunny } from "react-icons/io";
 import { FaWind, FaSnowflake, FaCloudRain } from "react-icons/fa6";
+import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer} from 'recharts';
 
 const WeatherDash = () => {
   const [weather, setWeather] = useState(null);
@@ -62,6 +63,13 @@ const WeatherDash = () => {
 const currentHour = weather
   ? parseInt(weather.location.localtime.split(' ')[1].split(':')[0], 10)
   : null;
+
+const hourlyData = weather ? weather.forecast.forecastday[0].hour.map(hour => ({
+  time: hour.time.split(' ')[1].slice(0,5),
+  temp_c: hour.temp_c
+})) : [];
+
+
 
 
 const hourlyFromNow = weather
@@ -146,7 +154,14 @@ const hourlyFromNow = weather
 
             <div>
               <div className='h-45 border border-solid border-violetblue ml-3 mb-3'>
-                graph coming
+                <ResponsiveContainer width = '100%' height = '100%'>
+                  <LineChart data={hourlyData} margin = {{top: 0 ,right:5, left:5, bottom:0 }}>
+                    <CartesianGrid strokeDasharray= '5 1' />
+                    <XAxis dataKey= 'time' interval={3} />
+                    <Tooltip />
+                    <Line type='monotone' dataKey = 'temp_c' stroke='#4f46e5' strokeWidth = {2} />
+                  </LineChart>
+                </ResponsiveContainer>
               </div>
               <div className="hourly-container ">
               {hourlyFromNow.map(hour => (
