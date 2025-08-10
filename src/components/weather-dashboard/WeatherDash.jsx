@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './WeatherDash.css';
 import { IoMdSunny } from "react-icons/io";
 import { FaWind, FaSnowflake, FaCloudRain } from "react-icons/fa6";
-import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer} from 'recharts';
+import {LineChart, Line, XAxis, CartesianGrid, Tooltip, ResponsiveContainer} from 'recharts';
 
 const WeatherDash = () => {
   const [weather, setWeather] = useState(null);
@@ -81,7 +81,7 @@ const hourlyFromNow = weather
 
 
   return (
-    <div className='p-10 bg-bananamania h-screen'>
+    <div className='p-10 bg-bananamania h-[100%] pb-40'>
       <div className='text-right'>
         <input 
         className='border border-solid border-violetblue rounded-lg p-1 mb-5'
@@ -152,8 +152,8 @@ const hourlyFromNow = weather
               </div>
             </div>
 
-            <div>
-              <div className='h-45 border border-solid border-violetblue ml-3 mb-3'>
+            <div className='mt-5'>
+              <div className='h-45 border border-solid border-violetblue ml-3 mb-3 xl:h-60'>
                 <ResponsiveContainer width = '100%' height = '100%'>
                   <LineChart data={hourlyData} margin = {{top: 0 ,right:5, left:5, bottom:0 }}>
                     <CartesianGrid strokeDasharray= '5 1' />
