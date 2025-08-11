@@ -70,8 +70,6 @@ const hourlyData = weather ? weather.forecast.forecastday[0].hour.map(hour => ({
 })) : [];
 
 
-
-
 const hourlyFromNow = weather
   ? weather.forecast.forecastday[0].hour.filter(h => {
       const hourNum = parseInt(h.time.split(' ')[1].split(':')[0], 10);
