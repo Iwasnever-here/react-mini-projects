@@ -7,9 +7,11 @@ const BarcodeScanner = () => {
   const [error, setError] = useState("");
   const [productName, setProductName] = useState("");
   const [productIngredients, setProductIngredients] = useState("")
+  const [productImage, setProductImage] = useState("")
   const [showScanner, setShowScanner] = useState(false);
   const [showProduct, setShowProduct] = useState(false)
   const [showManagement, setShowManagement] = useState(false)
+
 
   const [userAllergies, setUserAllergies] = useState([])
   const [newAllergen, setNewAllergen] = useState('')
@@ -49,8 +51,19 @@ const BarcodeScanner = () => {
       if (json.status === 1) {
         const productName = json.product.product_name || "unknown product";
         const productIngredients = json.product.ingredients_text || "unknown ingredients"
+        const productImage = json.product.image_url || ""; 
         setProductName(productName);
         setProductIngredients(productIngredients)
+        setProductImage(productImage)
+
+        const lowerIngredients = productIngredients.toLowerCase()
+        const matched = userAllergies.filter((allergy) => {
+        const pattern = new RegExp(`\\b${allergy}\\b`, "i"); // \b = word boundary, i = ignore case
+        return pattern.test(lowerIngredients);
+      });
+
+      setFoundAllergies(matched)
+
       } else {
         setProductName(null);
         setProductIngredients(null)
@@ -140,14 +153,10 @@ return (
           <BarcodeScannerComponent 
             onUpdate={(error, result) => {
               if (result) {
-                if (barcode !== result.text) {
                   setBarcode(result.text);
                 }
-              } else {
-                if (!barcode) {
-                  setBarcode("Not Found");
-                }
-              }
+             
+        
             }}
           />
           </div>
@@ -162,10 +171,12 @@ return (
         {error && <p style={{ color: "red" }}>{error}</p>}
 
         {!loading && !error && productName && showProduct && 
-        <div className="text-center h-screen content-center">
+        <div className="flex flex-col text-center items-center justify-center content-center h-screen">
+        <img src = {productImage} />
         <p>scanned item :</p>
         <p>{productName}</p>
         <p>{productIngredients}</p>
+        <p className="bg-red-500">{foundAllergies.join(', ')}</p>
         <button onClick={() => setShowProduct(false)}
           className="bg-green-500 rounded-xl p-2 my-5">
             CLOSE
