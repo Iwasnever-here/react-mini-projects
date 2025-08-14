@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import BarcodeScannerComponent from "react-qr-barcode-scanner";
+import './BarcodeScanner.css'
 
 const BarcodeScanner = () => {
   const [barcode, setBarcode] = useState("");
@@ -95,51 +96,59 @@ const BarcodeScanner = () => {
 
 return (
     <>
-      <div>
+    
+      <div className=" ">
         {!showScanner && !showProduct && !showManagement &&
-        <div className="text-center h-screen content-center">
-        <h2 className="text-5xl ">ALLERGY SCANNER</h2>
+        <div className="piece bg-gradient-to-b from-white to-inchworm">
+        <img src = './barcodelogo.png' className="w-30" />
+        <h1>ALLERGY </h1> <h1>SCANNER</h1>
+        <div className="grid grid-cols-2 gap-4 mt-10"> 
         <button onClick={() => setShowScanner(true)}
-          className="bg-green-500 rounded-xl p-2 mt-5">
+          className="bg-black   p-2 my-5">
             SCAN
             </button>
-            <br/>
             <button onClick={() => setShowManagement(true)}
-          className="bg-blue-500 rounded-xl p-2 my-5">
+          className="bg-black  p-2 my-5">
             MANAGE ALLERGIES
             </button>
+            </div>
         </div>
         }
 
         { showManagement && (
-          <div className="text-center h-screen content-center"> 
+          <div className="piece"> 
+          <div>
             <h1 className="text-4xl">SET ALLERGIES</h1>
+            
             <input 
-            className="mt-5 border border-solid p-1"
+            className="mt-5 border border-solid p-1 mr-3 text-black"
             type = 'text'
             value = {newAllergen}
             onChange = {(e) => setNewAllergen(e.target.value)}
-            placeholder="please enter allergen e.g. nuts"
+            // add enter to enter logic
+            placeholder="please enter allergen"
             />
-            <button onClick = {addAllergies}>[ + ]</button>
+            <button className="bg-forest px-3  py-1 text-xl " onClick = {addAllergies}>+</button>
             <br />
-
+            </div>
+          <div className="max-w-300">
             <ul className="grid grid-cols-3 gap-3 mx-20 my-6 ">
               {userAllergies.length > 0 ? (
                 userAllergies.map((a) => (
                   <li
-                  className="flex justify-center"
+                  className="flex justify-center "
                   key = {a}
-                  ><div className="bg-red-500 rounded-xl w-50 ">{a}
-                  <button className = 'ml-4' onClick={() => removeAllergies(a)}>X</button>
+                  ><div className="bg-inchworm rounded-xl w-50 ">{a}
+                  <button className = 'ml-8 !text-mahogany'  onClick={() => removeAllergies(a)}>X</button>
                   </div>
                   </li>
                 ))
-              ): <p>NO ALLERGIES ENTERED</p>}
+              ): <p className="text-inchworm col-2">NO ALLERGIES ENTERED</p>}
             </ul>
+            </div>
 
              <button onClick={() => setShowManagement(false)}
-          className="bg-red-500 rounded-xl p-2 my-5">
+          className="bg-black  p-2 my-5">
             EXIT
             </button>
           </div>
@@ -148,8 +157,9 @@ return (
 
 
         {showScanner &&  (
-          <div className="flex flex-col text-center items-center justify-center content-center h-screen">
-            <div className="w-150 bg-red-500 border border-solid border-red-500 border-4 rounded-xl p-1">
+          <div className="piece">
+            <h1 className="text-5xl text-forest">SCAN A BARCODE</h1>
+            <div className="w-150 mt-6 bg-inchworm border border-solid border-inchworm border-4 rounded-xl p-1">
           <BarcodeScannerComponent 
             onUpdate={(error, result) => {
               if (result) {
@@ -161,7 +171,7 @@ return (
           />
           </div>
           <button onClick={() => setShowScanner(false)}
-          className="bg-red-500 rounded-xl p-2 my-5">
+          className="bg-black text-white rounded-xl p-2 my-5">
             EXIT
             </button>
           </div>
@@ -171,16 +181,34 @@ return (
         {error && <p style={{ color: "red" }}>{error}</p>}
 
         {!loading && !error && productName && showProduct && 
-        <div className="flex flex-col text-center items-center justify-center content-center h-screen">
-        <img src = {productImage} />
-        <p>scanned item :</p>
-        <p>{productName}</p>
-        <p>{productIngredients}</p>
-        <p className="bg-red-500">{foundAllergies.join(', ')}</p>
+        <div className="piece">
+          <h1 className="mb-6 mt-6">SCANNED ITEM </h1>
+          <div className="w-80 h-80">
+        <img className="object-contain w-full h-full" src = {productImage} />
+        </div>
+        <div className="bg-inchworm rounded-t-xl h-full text-left p-6 m-6 max-w-[900px]">
+        <h2 className="text-2xl text-black">{productName}</h2>
+        <ul className="grid grid-cols-3 gap-3 mx-20  ">
+              {foundAllergies.length > 0 ? (
+                foundAllergies.map((a) => (
+                  <li
+                  className="flex justify-center text-center my-3"
+                  key = {a}
+                  ><div className="bg-mahogany border border-solid border-black rounded-xl w-50 ">{a}
+                  </div>
+                  </li>
+                ))
+              ): <p className="text-forest col-span-3 my-2">NONE OF YOUR ALLERGIES DETECTED - CHECK YOURSELF IF YOU ARE UNSURE - THIS IS NOT 100% CORRECT</p>}
+            </ul>
+        <p>FULL INGREDIENT LIST: </p>
+        <p className="text-forest">{productIngredients}</p>
+        <div className="text-center" >
         <button onClick={() => setShowProduct(false)}
-          className="bg-green-500 rounded-xl p-2 my-5">
+          className="bg-black p-2 mt-10 ">
             CLOSE
             </button>
+        </div>
+        </div>
         </div>}
         
       </div>

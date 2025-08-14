@@ -1,2 +1,20 @@
-@import 'tailwindcss'
+@import 'tailwindcss';
+
+
+@theme {
+    --color-inchworm: #B2EC5D;
+    --color-forest: #6DAE81;
+    --color-mahogany: #CD4A4C;
+}
+.piece {
+    @apply flex flex-col text-center items-center justify-center content-center h-screen
+}
+
+h1 {
+    @apply text-5xl text-forest
+}
+
+button {
+    @apply rounded-full text-white
+}
 
