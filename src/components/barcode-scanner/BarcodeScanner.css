@@ -10,11 +10,11 @@
     @apply flex flex-col text-center items-center justify-center content-center h-screen
 }
 
-h1 {
+.piece h1 {
     @apply text-5xl text-forest
 }
 
-button {
-    @apply rounded-full text-white
+.piece button {
+    @apply rounded-full text-white cursor-pointer
 }
 

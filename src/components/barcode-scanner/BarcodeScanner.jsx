@@ -99,16 +99,16 @@ return (
     
       <div className=" ">
         {!showScanner && !showProduct && !showManagement &&
-        <div className="piece bg-gradient-to-b from-white to-inchworm">
+        <div className="piece ">
         <img src = './barcodelogo.png' className="w-30" />
-        <h1>ALLERGY </h1> <h1>SCANNER</h1>
+        <h1 className="!text-black">ALLERGY </h1> <h1 className="!text-6xl">SCANNER</h1>
         <div className="grid grid-cols-2 gap-4 mt-10"> 
         <button onClick={() => setShowScanner(true)}
-          className="bg-black   p-2 my-5">
+          className="bg-black   p-3 my-5">
             SCAN
             </button>
             <button onClick={() => setShowManagement(true)}
-          className="bg-black  p-2 my-5">
+          className="bg-black  p-4 my-5">
             MANAGE ALLERGIES
             </button>
             </div>
@@ -118,7 +118,7 @@ return (
         { showManagement && (
           <div className="piece"> 
           <div>
-            <h1 className="text-4xl">SET ALLERGIES</h1>
+            <h1 className="text-4xl mb-5">SET ALLERGIES</h1>
             
             <input 
             className="mt-5 border border-solid p-1 mr-3 text-black"
@@ -138,17 +138,17 @@ return (
                   <li
                   className="flex justify-center "
                   key = {a}
-                  ><div className="bg-inchworm rounded-xl w-50 ">{a}
+                  ><div className="bg-inchworm rounded-xl w-50 p-2 border border-solid shadow shadow-forest ">{a}
                   <button className = 'ml-8 !text-mahogany'  onClick={() => removeAllergies(a)}>X</button>
                   </div>
                   </li>
                 ))
-              ): <p className="text-inchworm col-2">NO ALLERGIES ENTERED</p>}
+              ): <p className="text-inchworm col-2 text-xl">NO ALLERGIES ENTERED</p>}
             </ul>
             </div>
 
              <button onClick={() => setShowManagement(false)}
-          className="bg-black  p-2 my-5">
+          className="bg-black  p-3 my-5">
             EXIT
             </button>
           </div>
@@ -184,17 +184,17 @@ return (
         <div className="piece">
           <h1 className="mb-6 mt-6">SCANNED ITEM </h1>
           <div className="w-80 h-80">
-        <img className="object-contain w-full h-full" src = {productImage} />
+        <img className="object-contain w-full h-full " src = {productImage} />
         </div>
-        <div className="bg-inchworm rounded-t-xl h-full text-left p-6 m-6 max-w-[900px]">
-        <h2 className="text-2xl text-black">{productName}</h2>
-        <ul className="grid grid-cols-3 gap-3 mx-20  ">
+        <div className="bg-inchworm rounded-t-xl h-full text-left p-6 m-6 max-w-[900px] shadow shadow-forest shadow-lg border border-solid">
+        <h2 className="text-3xl text-black">{productName}</h2>
+        <ul className="grid grid-cols-3 gap-3 mx-20 my-3 ">
               {foundAllergies.length > 0 ? (
                 foundAllergies.map((a) => (
                   <li
-                  className="flex justify-center text-center my-3"
+                  className="flex justify-center text-center mt-3"
                   key = {a}
-                  ><div className="bg-mahogany border border-solid border-black rounded-xl w-50 ">{a}
+                  ><div className="bg-mahogany border border-solid border-black rounded-xl w-50 shadow shadow-forest ">{a}
                   </div>
                   </li>
                 ))
@@ -204,7 +204,7 @@ return (
         <p className="text-forest">{productIngredients}</p>
         <div className="text-center" >
         <button onClick={() => setShowProduct(false)}
-          className="bg-black p-2 mt-10 ">
+          className="bg-black p-3 mt-10 ">
             CLOSE
             </button>
         </div>

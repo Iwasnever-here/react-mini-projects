@@ -10,6 +10,7 @@ import WeatherDash from './components/weather-dashboard/WeatherDash';
 import BarcodeScanner from './components/barcode-scanner/BarcodeScanner';
 
 
+
 function App() {
   return (
     <BrowserRouter>
@@ -26,7 +27,8 @@ function App() {
       '/timer': 'bg-onyx',
       '/crayola': 'bg-yellow-400',
       '/hangman' : 'bg-outerspace',
-      '/weather' : 'bg-bananamania'
+      '/weather' : 'bg-bananamania',
+      '/barcode' : 'bg-white'
     }
 
     const navColor = routeColorMap[location.pathname] || 'bg-gray-100';
