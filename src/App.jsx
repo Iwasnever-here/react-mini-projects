@@ -8,6 +8,7 @@ import { FaReact } from "react-icons/fa6";
 import HangMan from './components/hang-man/HangMan';
 import WeatherDash from './components/weather-dashboard/WeatherDash';
 import BarcodeScanner from './components/barcode-scanner/BarcodeScanner';
+import Quiz from './components/Quiz/Quiz';
 
 
 
@@ -56,6 +57,7 @@ function App() {
         <Route path = "/hangman" element = {<HangMan />} />
         <Route path = "/weather" element = {<WeatherDash />} />
         <Route path = "/barcode" element = {<BarcodeScanner />} />
+         <Route path = "/quiz" element = {<Quiz />} />
       </Routes>
 
     </>
@@ -78,6 +80,7 @@ function Home() {
     <div><Link to="/hangman" className="text-zinc-950 text-lg px-5">Hang Man</Link></div>
     <div><Link to="/weather" className="text-zinc-950 text-lg px-5">Weather Dashboard</Link></div>
     <div><Link to="/barcode" className="text-zinc-950 text-lg px-5">Barcode Scanner</Link></div>
+    <div><Link to="/quiz" className="text-zinc-950 text-lg px-5">Quiz</Link></div>
   </div>)
 }
 
