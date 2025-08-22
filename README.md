@@ -1,12 +1,32 @@
-# React + Vite
+# 💻 React mini projects
+a collection of small react projects that use different aspects of react, in hope to be able to improve my coding in react and understand the concepts very well to make more advance projects in the future. 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## ✨ Technologies
 
-Currently, two official plugins are available:
+react
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+tailwindcss
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🚀 Features
+
+- pomodoro timer 
+- timer
+- crayola colours (hex copy and paste)
+- hangman
+- barcode scanner (allergy checker)
+- weather dashboard
+- quiz 
+
+
+
+## 📍 The Process
+After completing a few projects in react, I decided to go back to basics and master the fundermentals to make future projects easier. I decided to start from simple timer projects and move to more advance ones with conditional rendering - my aim was to keep all projects to one file, to avoid these mini projects becoming too advance. 
+
+## 🚦 Running the Project
+Clone the repository
+
+npm run dev
+
+## 🎞️ Preview
+coming soon
