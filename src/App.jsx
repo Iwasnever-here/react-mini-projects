@@ -9,6 +9,7 @@ import HangMan from './components/hang-man/HangMan';
 import WeatherDash from './components/weather-dashboard/WeatherDash';
 import BarcodeScanner from './components/barcode-scanner/BarcodeScanner';
 import Quiz from './components/Quiz/Quiz';
+import TicTac from './components/tic-tak/TicTac';
 
 
 
@@ -57,8 +58,10 @@ function App() {
         <Route path = "/hangman" element = {<HangMan />} />
         <Route path = "/weather" element = {<WeatherDash />} />
         <Route path = "/barcode" element = {<BarcodeScanner />} />
-         <Route path = "/quiz" element = {<Quiz />} />
+        <Route path = "/quiz" element = {<Quiz />} />
+        <Route path = "/tictac" element = {<TicTac />} />
       </Routes>
+
 
     </>
     
@@ -81,6 +84,7 @@ function Home() {
     <div><Link to="/weather" className="text-zinc-950 text-lg px-5">Weather Dashboard</Link></div>
     <div><Link to="/barcode" className="text-zinc-950 text-lg px-5">Barcode Scanner</Link></div>
     <div><Link to="/quiz" className="text-zinc-950 text-lg px-5">Quiz</Link></div>
+    <div><Link to="/tictac" className="text-zinc-950 text-lg px-5">Tic Tac Toe</Link></div>
   </div>)
 }
 

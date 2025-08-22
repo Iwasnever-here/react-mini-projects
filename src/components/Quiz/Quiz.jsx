@@ -92,7 +92,8 @@ const Quiz = () => {
 
   if (quizFinished) {
     return (
-      <div className="p-4 text-center">
+      <div className="p-4 text-center content-center h-screen bg-neutral-800 text-white">
+        <div className='max-w-lg mx-auto border border-white p-10 '>
         <h2 className="text-2xl font-bold mb-4">Quiz Finished!</h2>
         <p className="text-lg mb-2">Correct: {correct}</p>
         <p className="text-lg mb-2">Wrong: {wrong}</p>
@@ -100,11 +101,12 @@ const Quiz = () => {
           Score: {((correct / cards.length) * 100).toFixed(1)}%
         </p>
          <button
-          className="mt-6 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+          className="mt-6 px-4 py-2 bg-black text-white rounded hover:bg-neutral-900"
           onClick={startQuiz}
         >
           Play Again
         </button>
+        </div>
       </div>
     );
   }
@@ -112,19 +114,19 @@ const Quiz = () => {
   const currentCard = cards[currentIndex];
 
   return (
-    <div className='content-center h-screen '>
-    <div className="p-10 max-w-[900px] mx-auto bg-red-500 rounded-lg">
-        <p className="mt-4 text-sm text-gray-500 text-center">
+    <div className='content-center h-screen bg-neutral-800'>
+    <div className="p-10 max-w-[900px] mx-auto rounded-lg">
+        <p className="mt-4 text-sm text-gray-400 text-center">
         Definition {currentIndex + 1} of {cards.length}
       </p>
 
       <div >
-        <div className='border rounded-lg m-3 p-3 mb-20 bg-white'>
-        <p className="mb-4"> {currentCard.answer}</p>
+        <div className='rounded-lg m-3 p-3 mb-20 bg-white'>
+        <p className="mb-4 text-xl"> {currentCard.answer}</p>
         </div>
         <div className="space-y-2">
           {options.map((question, idx) => {
-            let bgColor = "bg-white";
+            let bgColor = " bg-neutral-800";
             if (selectedOption) {
               if (question === currentCard.question) bgColor = "bg-green-300";
               else if (question === selectedOption) bgColor = "bg-red-300";
@@ -133,7 +135,7 @@ const Quiz = () => {
             return (
               <button
                 key={idx}
-                className={`${bgColor} block w-full text-left px-4 py-2 border rounded`}
+                className={`${bgColor} block w-full text-left text-white px-4 py-4 mb-6 border rounded-xl shadow shadow-sm shadow-white hover:shadow-md`}
                 onClick={() => handleClick(question)}
                 disabled={!!selectedOption}
               >
