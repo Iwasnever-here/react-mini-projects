@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import "./TicTac.css";
 
 const TicTac = () => {
 
@@ -14,7 +15,7 @@ const TicTac = () => {
     function handleClick (i) {
         if (board[i] || winner) return;
         const newBoard = board.slice()
-        newBoard[i] = xturn ? 'x' : 'o'
+        newBoard[i] = xturn ? './blueberry.png' : './butter.png'
         setBoard(newBoard)
         setXturn(!xturn)
     }
@@ -40,27 +41,35 @@ const TicTac = () => {
         return null;
     }
 
+    function restart() {
+      setBoard(Array(9).fill(null));
+      setXIsNext(true);
+    }
                                                                
   return (
-    <div >
+    <div className='text-center mt-5'>
+       <p>TURN IS {xturn ? 'blueberry' : 'butter'}</p>
+        <p>WINNER IS {winner ? (winner === "./blueberry.png" ? "blueberry" : "butter") : ""}</p>
     <div className='max-w-200 m-10 mx-auto'>
-      <div className="grid grid-cols-3 gap-2 text-6xl">
+      <div className=' rounded rounded-full p-29 bg-copper border border-apricot border-9'>
+      <div className="grid grid-cols-3 gap-2 text-6xl bg-brown ">
         {board.map((square, i) => (
           <button
             key={i}
             onClick={() => handleClick(i)}
-            className="border border-solid aspect-square"
+            className="tic border-solid aspect-square bg-copper cursor-pointer"
           >
-            {square}
+            <img src ={square}/>
           </button>
         ))}
       </div>
+      </div>
 
       <div>
-        <p>TURN IS {xturn ? 'x' : 'o'}</p>
-        <p>RESTART</p>
-        <p>WINNER IS {winner}</p>
-        <p>PLAY AGAIN</p>
+        <button
+        onClick={() => restart()}
+        className='cursor-pointer mt-5'
+        >PLAY AGAIN</button>
       </div>
 
       </div>

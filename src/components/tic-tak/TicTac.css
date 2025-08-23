@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+@theme {
+    --color-copper: #DD9475;
+    --color-apricot: #FDD9B5;
+    --color-brown: #B4674D;
+}
