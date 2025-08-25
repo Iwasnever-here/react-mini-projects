@@ -30,7 +30,9 @@ function App() {
       '/crayola': 'bg-yellow-400',
       '/hangman' : 'bg-outerspace',
       '/weather' : 'bg-bananamania',
-      '/barcode' : 'bg-white'
+      '/barcode' : 'bg-white',
+      '/tictac' : 'bg-copper'
+
     }
 
     const navColor = routeColorMap[location.pathname] || 'bg-gray-100';

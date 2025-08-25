@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./TicTac.css";
 
 const TicTac = () => {
@@ -8,9 +8,31 @@ const TicTac = () => {
     const [xturn, setXturn] = useState(true)
     // check positions
     // display x and o s
-    const [pic, setPic] = useState('')
+    
+    const [play, setPlay] = useState(false)
+    const [end, setEnd] = useState(false)
 
     const winner = calcWinner(board);
+
+    useEffect (() => {
+      let allFilled = true;
+      for (let i = 0; i < 9; i++) {
+        if (board[i] === null) {
+          allFilled = false;
+          break;
+        }
+      }
+
+      if (allFilled || winner){
+        const timer = setTimeout(() => {
+          setEnd(true)
+        
+        }, 1000);
+        return () => clearTimeout(timer)
+        
+      }
+
+    }, [board])
 
     function handleClick (i) {
         if (board[i] || winner) return;
@@ -35,7 +57,8 @@ const TicTac = () => {
 
         for (let [a,b,c] of lines) {
             if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-                return squares[a]
+              return squares[a]
+
             }
         }
         return null;
@@ -43,38 +66,59 @@ const TicTac = () => {
 
     function restart() {
       setBoard(Array(9).fill(null));
-      setXIsNext(true);
+      setXturn(true);
+      setEnd(false)
     }
-                                                               
+            
+    
   return (
+
+    <div>
+    {play && !end ? (
     <div className='text-center mt-5'>
-       <p>TURN IS {xturn ? 'blueberry' : 'butter'}</p>
-        <p>WINNER IS {winner ? (winner === "./blueberry.png" ? "blueberry" : "butter") : ""}</p>
+       <p className='text-2xl text-brown mt-10'>TURN IS {xturn ? 'BLUEBERRY' : 'BUTTER'}</p>
     <div className='max-w-200 m-10 mx-auto'>
-      <div className=' rounded rounded-full p-29 bg-copper border border-apricot border-9'>
+      <div className=' rounded rounded-full p-29 bg-copper border border-apricot border-9 mx-10'>
       <div className="grid grid-cols-3 gap-2 text-6xl bg-brown ">
         {board.map((square, i) => (
           <button
             key={i}
             onClick={() => handleClick(i)}
-            className="tic border-solid aspect-square bg-copper cursor-pointer"
+            className="border-solid aspect-square bg-copper cursor-pointer "
           >
-            <img src ={square}/>
+            <img src ={square} />
           </button>
         ))}
       </div>
       </div>
 
-      <div>
-        <button
-        onClick={() => restart()}
-        className='cursor-pointer mt-5'
-        >PLAY AGAIN</button>
-      </div>
-
       </div>
     </div>
-  )
-}
+  ) : end ? (
+    <div className='h-screen content-center text-center bg-copper'>
+    <p className='text-yellow-300 text-2xl'>{winner ? (winner === "./blueberry.png" ? "blueberry wins!" : "butter wins!") : "draw noone wins :("}</p>
+    <div>
+        <button
+        onClick={() => restart()}
+        className='text-4xl my-10 cursor-pointer bg-brown text-apricot p-8 rounded-full'
+        >PLAY AGAIN</button>
+      </div>
+    </div>
+
+  ) : (
+      <div className='h-screen flex flex-col justify-center items-center text-center bg-copper'>
+        <h1 className='text-yellow-200 text-7xl'>TIC TAC TOE</h1>
+        <button onClick={() => setPlay(true)} 
+          className='text-6xl my-10 cursor-pointer bg-brown text-apricot p-8 rounded-full'>play</button>
+        <div className='flex items-center rounded-full p-1 gap-3'>
+          <img src = './butter.png' className='h-30 '/>
+          VS
+          <img src = './blueberry.png' className='h-30 '/>
+        </div>
+        </div>
+        )}
+      </div>
+
+  )}
 
 export default TicTac
