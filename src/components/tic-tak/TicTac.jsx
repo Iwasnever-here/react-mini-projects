@@ -109,7 +109,7 @@ const TicTac = () => {
       <div className='h-screen flex flex-col justify-center items-center text-center bg-copper'>
         <h1 className='text-yellow-200 text-7xl'>TIC TAC TOE</h1>
         <button onClick={() => setPlay(true)} 
-          className='text-6xl my-10 cursor-pointer bg-brown text-apricot p-8 rounded-full'>play</button>
+          className='text-6xl my-10 cursor-pointer bg-brown text-apricot p-8  pb-11 rounded-full'>play</button>
         <div className='flex items-center rounded-full p-1 gap-3'>
           <img src = './butter.png' className='h-30 '/>
           VS

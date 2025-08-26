@@ -78,7 +78,8 @@ function App() {
 function Home() {
   return(
   <div >
-    <h1>components:</h1>
+    <h1 className='text-center text-2xl'>components:</h1>
+    <div className='maingrid grid md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-4 gap-5 m-5 '>
     <div><Link to="/pomodoro" className="text-zinc-950 text-lg px-5">Pomodoro Timer</Link></div>
     <div><Link to="/timer" className="text-zinc-950 text-lg px-5">Timer</Link></div>
     <div><Link to="/crayola" className="text-zinc-950 text-lg px-5">Crayola Colors</Link></div>
@@ -87,6 +88,7 @@ function Home() {
     <div><Link to="/barcode" className="text-zinc-950 text-lg px-5">Barcode Scanner</Link></div>
     <div><Link to="/quiz" className="text-zinc-950 text-lg px-5">Quiz</Link></div>
     <div><Link to="/tictac" className="text-zinc-950 text-lg px-5">Tic Tac Toe</Link></div>
+    </div>
   </div>)
 }
 

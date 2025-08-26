@@ -8,7 +8,7 @@
 }
 
 .tile {
-    @apply h-20 rounded-xl bg-bananamania border border-violetblue pl-4 p-3 flex items-center grid grid-cols-2 text-violetblue
+    @apply h-25 rounded-xl bg-bananamania border border-violetblue pl-4 p-3 flex items-center grid grid-cols-2 text-violetblue
 }
 
 .top-section2 {
@@ -17,7 +17,7 @@
 }
 
 .hour-tile {
-    @apply h-25 px-10 bg-violetblue rounded-lg xl:h-35 text-center
+    @apply h-30 px-10 bg-violetblue rounded-lg xl:h-35 text-center
 }
 
 .hourly-container {
