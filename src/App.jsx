@@ -24,7 +24,7 @@ function App() {
     const location = useLocation() 
 
     const routeColorMap ={
-      '/': 'bg-white',
+      '/': 'bg-bananamania',
       '/pomodoro': 'bg-pomodorored',
       '/timer': 'bg-onyx',
       '/crayola': 'bg-yellow-400',
@@ -77,17 +77,17 @@ function App() {
 
 function Home() {
   return(
-  <div >
+  <div className='h-screen bg-bananamania'>
     <h1 className='text-center text-2xl'>components:</h1>
-    <div className='maingrid grid md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-4 gap-5 m-5 '>
-    <div><Link to="/pomodoro" className="text-zinc-950 text-lg px-5">Pomodoro Timer</Link></div>
-    <div><Link to="/timer" className="text-zinc-950 text-lg px-5">Timer</Link></div>
-    <div><Link to="/crayola" className="text-zinc-950 text-lg px-5">Crayola Colors</Link></div>
-    <div><Link to="/hangman" className="text-zinc-950 text-lg px-5">Hang Man</Link></div>
-    <div><Link to="/weather" className="text-zinc-950 text-lg px-5">Weather Dashboard</Link></div>
-    <div><Link to="/barcode" className="text-zinc-950 text-lg px-5">Barcode Scanner</Link></div>
-    <div><Link to="/quiz" className="text-zinc-950 text-lg px-5">Quiz</Link></div>
-    <div><Link to="/tictac" className="text-zinc-950 text-lg px-5">Tic Tac Toe</Link></div>
+    <div className='maingrid grid md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-4 gap-10 m-10 '>
+    <div className='bg-pomodorored'><Link to="/pomodoro" className="text-zinc-950 text-lg px-5">Pomodoro Timer</Link></div>
+    <div className='bg-shadows'><Link to="/timer" className="text-zinc-950 text-lg px-5">Timer</Link></div>
+    <div className='bg-yellow-400'><Link to="/crayola" className="text-zinc-950 text-lg px-5">Crayola Colors</Link></div>
+    <div className='bg-apricot'><Link to="/hangman" className="text-zinc-950 text-lg px-5">Hang Man</Link></div>
+    <div className='bg-cornflower'><Link to="/weather" className="text-zinc-950 text-lg px-5">Weather Dashboard</Link></div>
+    <div className='bg-inchworm'><Link to="/barcode" className="text-zinc-950 text-lg px-5">Barcode Scanner</Link></div>
+    <div className='bg-wisteria'><Link to="/quiz" className="text-zinc-950 text-lg px-5">Quiz</Link></div>
+    <div className='bg-copper'><Link to="/tictac" className="text-zinc-950 text-lg px-5">Tic Tac Toe</Link></div>
     </div>
   </div>)
 }

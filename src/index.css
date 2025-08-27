@@ -11,5 +11,5 @@ body{
 }
 
 .maingrid div {
-  @apply  h-30 rounded-xl border border-solid content-center text-center
+  @apply  h-40 rounded-xl border border-solid border-3  shadow shadow-md shadow-neutral-400 content-center text-center hover:border-2 hover:shadow-lg
 }
