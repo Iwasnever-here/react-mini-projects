@@ -62,6 +62,7 @@ function App() {
         <Route path = "/barcode" element = {<BarcodeScanner />} />
         <Route path = "/quiz" element = {<Quiz />} />
         <Route path = "/tictac" element = {<TicTac />} />
+        
       </Routes>
 
 

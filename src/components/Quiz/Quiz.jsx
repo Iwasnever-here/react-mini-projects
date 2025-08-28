@@ -9,7 +9,8 @@ const Quiz = () => {
   const [correct, setCorrect] = useState(0)
   const [wrong, setWrong] = useState(0)
   const [selectedOption, setSelectedOption] = useState(null)
-  const [quizFinished, setQuizFinished] = useState(false);
+  const [quizFinished, setQuizFinished] = useState(false); 
+  const [start, setStart] = useState(false)
 
 
 
@@ -89,6 +90,18 @@ const Quiz = () => {
 
 
   if (cards.length === 0) return <p>Loading...</p>;
+
+  if (!start) {
+    return (
+      <div className='h-screen bg-neutral-800 content-center text-center text-white'>
+        <div className='max-w-lg mx-auto border border-white p-10 '>
+        <h1 className='text-2xl font-bold mb-4'>VOCABULARY QUIZ</h1>
+        <p className='text-md my-5'>EACH ROUND IS 20 RANDOM WORD DEFINITIONS YOU HAVE TO SELECT RIGHT WORD</p>
+        <button className='mt-6 px-4 py-2 bg-black text-white rounded hover:bg-neutral-900' onClick={() => setStart(true)}>start</button>
+      </div>
+      </div>
+    )
+  }
 
   if (quizFinished) {
     return (
