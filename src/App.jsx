@@ -10,6 +10,7 @@ import WeatherDash from './components/weather-dashboard/WeatherDash';
 import BarcodeScanner from './components/barcode-scanner/BarcodeScanner';
 import Quiz from './components/Quiz/Quiz';
 import TicTac from './components/tic-tak/TicTac';
+import MatchGame from './components/match-game/MatchGame';
 
 
 
@@ -62,6 +63,7 @@ function App() {
         <Route path = "/barcode" element = {<BarcodeScanner />} />
         <Route path = "/quiz" element = {<Quiz />} />
         <Route path = "/tictac" element = {<TicTac />} />
+           <Route path = "/match" element = {<MatchGame />} />
         
       </Routes>
 
@@ -89,6 +91,7 @@ function Home() {
     <div className='bg-inchworm'><Link to="/barcode" className="text-zinc-950 text-lg px-5">Barcode Scanner</Link></div>
     <div className='bg-wisteria'><Link to="/quiz" className="text-zinc-950 text-lg px-5">Quiz</Link></div>
     <div className='bg-copper'><Link to="/tictac" className="text-zinc-950 text-lg px-5">Tic Tac Toe</Link></div>
+    <div className='bg-white'><Link to="/match" className="text-zinc-950 text-lg px-5">Matching Cards</Link></div>
     </div>
   </div>)
 }
