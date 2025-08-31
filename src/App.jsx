@@ -32,7 +32,9 @@ function App() {
       '/hangman' : 'bg-outerspace',
       '/weather' : 'bg-bananamania',
       '/barcode' : 'bg-white',
-      '/tictac' : 'bg-copper'
+      '/tictac' : 'bg-copper',
+      '/match' : 'bg-carnationpink'
+
 
     }
 
@@ -63,7 +65,7 @@ function App() {
         <Route path = "/barcode" element = {<BarcodeScanner />} />
         <Route path = "/quiz" element = {<Quiz />} />
         <Route path = "/tictac" element = {<TicTac />} />
-           <Route path = "/match" element = {<MatchGame />} />
+        <Route path = "/match" element = {<MatchGame />} />
         
       </Routes>
 

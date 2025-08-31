@@ -1,4 +1,9 @@
 @import 'tailwindcss';
+
+
+@theme {
+  --color-carnationpink: #FFAACC;
+}
 .grid-card {
   perspective: 1000px; 
   @apply h-50 
@@ -36,11 +41,11 @@
 
 .grid-card-front {
   background-color: #BAB86C;
-  border: 1px solid #ccc;
+  border: 2px solid black;
 }
 
 .grid-card-back {
   background-color: #ECEABE; 
-  border: 1px solid #ccc;
+  border: 2px solid black;
   transform: rotateY(180deg);
 }

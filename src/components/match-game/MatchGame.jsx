@@ -22,7 +22,9 @@ const MatchGame = () => {
   const [selected, setSelected] = useState([]);
   const [matched, setMatched] = useState([]);
   const [moves, setMoves] = useState(0);
-  const [lives, setLives] = useState(4);
+  const [lives, setLives] = useState(5);
+  const [gameEnd, setGameEnd] = useState(false)
+  const [gameWon, setGameWon] = useState(false)
 
   function clicked(card) {
     if (matched.some((m) => m.img === card.img)) return;
@@ -45,12 +47,59 @@ const MatchGame = () => {
     }
   }, [selected]);
 
-  return (
-    <div className="h-screen content-center text-center">
-      <div>Lives: {lives}</div>
-      <div>Moves: {moves}</div>
+  useEffect (() => {
+    if (matched.length === 12){
+      setGameWon(true)
+    }
+  }, [matched])
 
-      <div className="grid grid-cols-4 gap-4 max-w-200 m-20 lg:mx-auto">
+  useEffect(()=> {
+    if (lives === 0){
+      setGameEnd(true)
+    }
+  })
+
+  function reset() {
+    setGameEnd(false)
+    setGameWon(false)
+    setLives(5)
+    setMoves(0)
+    setSelected([])
+    setMatched([])
+  }
+
+  if (gameWon) {
+    return (
+       <div className="h-screen bg-bananamania content-center text-center">
+        <h1 className="text-4xl">GAME WON!</h1>
+        <button 
+        className=" cursor-pointer bg-carnationpink p-3 border-2 border-solid shadow-[4px_4px_0_0_#000] mt-5"
+        onClick={() => reset()}>PLAY AGAIN</button>
+      </div>
+    )
+  }
+
+  if (gameEnd) {
+    return (
+      <div className="h-screen bg-bananamania content-center text-center">
+        <h1 className="text-4xl">GAME LOST</h1>
+        <button 
+        className=" cursor-pointer bg-carnationpink p-3 border-2 border-solid shadow-[4px_4px_0_0_#000] mt-5"
+        onClick={() => reset()}>PLAY AGAIN</button>
+      </div>
+    )
+  }
+  else 
+
+  return (
+    <div className="h-screen content-center text-center bg-carnationpink text-xl">
+      <div className="max-w-200 bg-bananamania m-20 p-6 border-2 shadow-[4px_4px_0_0_#000]">
+      <div className="grid grid-cols-3 max-w-200  mb-10 gap-5 text-center lg:mx-auto">
+      <div className="bg-carnationpink p-3 border-2 border-solid shadow-[4px_4px_0_0_#000]">Lives: {lives}</div>
+      <button className="cursor-pointer bg-carnationpink p-3 border-2 border-solid shadow-[4px_4px_0_0_#000]"> RESTART</button>
+      <div className="bg-carnationpink p-3 border-2 border-solid shadow-[4px_4px_0_0_#000]">Moves: {moves}</div>
+      </div>
+      <div className="grid grid-cols-4 gap-4 max-w-200  lg:mx-auto text-3xl">
         {cards.map((card) => {
           const isFlipped =
             selected.some((s) => s.id === card.id) ||
@@ -71,9 +120,9 @@ const MatchGame = () => {
                     </div>
                 </div>
                 </div>
-
           );
         })}
+        </div>
       </div>
     </div>
   );
