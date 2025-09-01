@@ -93,7 +93,7 @@ function Home() {
     <div className='bg-inchworm'><Link to="/barcode" className="text-zinc-950 text-lg px-5">Barcode Scanner</Link></div>
     <div className='bg-wisteria'><Link to="/quiz" className="text-zinc-950 text-lg px-5">Quiz</Link></div>
     <div className='bg-copper'><Link to="/tictac" className="text-zinc-950 text-lg px-5">Tic Tac Toe</Link></div>
-    <div className='bg-white'><Link to="/match" className="text-zinc-950 text-lg px-5">Matching Cards</Link></div>
+    <div className='bg-carnationpink'><Link to="/match" className="text-zinc-950 text-lg px-5">Matching Cards</Link></div>
     </div>
   </div>)
 }
