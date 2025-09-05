@@ -1,0 +1,68 @@
+import React, { useState } from 'react'
+import QRCode from 'react-qr-code';
+
+
+
+const QrGenerator = () => {
+
+  const [value, setValue] = useState('');
+  const [back, setBack] = useState('#FFFFFF')
+  const [front, setFront] = useState('#000000')
+
+ 
+  const [tempValue, setTempValue] = useState('');
+  const [tempBack, setTempBack] = useState('#FFFFFF');
+  const [tempFront, setTempFront] = useState('#000000');
+
+  const handleGenerate = () => {
+    setValue(tempValue)
+    setBack(tempBack)
+    setFront(tempFront)
+  }
+
+
+  return (
+    <div className='h-screen content-center  text-center p-10'>
+        <div className="max-w-300 bg-blue-500 mx-auto grid grid-cols-1 md:grid-cols-5 h-150 rounded-xl shadow-md shadow-neutral-600 rounded-xl">
+        <div className="bg-neutral-300 border-2 border-neutral-600 md:col-span-3 md:rounded-l-xl">
+            <p>link</p>
+            <input type = 'text'
+                   onChange={(e) => setTempValue(e.target.value)}
+                   placeholder='QR code value'
+            />
+            <p>background color</p>
+              <input type = 'text'
+                   onChange={(e) => setTempBack(e.target.value)}
+                   placeholder='QR code background color'
+            />
+            <p>color</p>
+              <input type = 'text'
+                   onChange={(e) => setTempFront(e.target.value)}
+                   placeholder='QR code color'
+            />
+          <br />
+            <button onClick={handleGenerate}
+            className='p-3 bg-green-300 rounded-full'>generate</button>
+        </div>
+        <div className="bg-white border-2 border-neutral-600 md:col-span-2 content-center md:rounded-r-xl ">
+            <p className='mx-20 md:mx-10 aspect-square bg-red-500 my-10 '>
+                 {value && (
+                    <QRCode
+                        title={value}
+                        value={value}
+                        bgColor={back}
+                        fgColor={front}
+                        size={undefined}
+                        style={{ width: "100%", height: "100%" }}
+                    />
+                )}
+            </p>
+            <p>download</p>
+        </div>
+    </div>
+
+    </div>
+  )
+}
+
+export default QrGenerator
