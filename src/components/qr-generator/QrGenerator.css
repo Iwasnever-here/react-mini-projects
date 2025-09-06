@@ -1,0 +1,5 @@
+@import 'tailwindcss';
+
+.grey-section input {
+    @apply bg-white my-4 p-2 border border-neutral-400
+}
