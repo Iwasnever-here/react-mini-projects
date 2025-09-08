@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import QRCode from 'react-qr-code';
 import './QrGenerator.css'
 
@@ -7,18 +7,50 @@ import './QrGenerator.css'
 const QrGenerator = () => {
 
   const [value, setValue] = useState('');
-  const [back, setBack] = useState('#FFFFFF')
-  const [front, setFront] = useState('#000000')
+  const [back, setBack] = useState('#FFFFFF');
+  const [front, setFront] = useState('#000000');
 
  
   const [tempValue, setTempValue] = useState('');
   const [tempBack, setTempBack] = useState('#FFFFFF');
   const [tempFront, setTempFront] = useState('#000000');
 
+  const qrRef = useRef();
+
   const handleGenerate = () => {
     setValue(tempValue)
     setBack(tempBack)
     setFront(tempFront)
+  }
+
+  const handleDownload = () => {
+    //get QR code 
+    const svg = qrRef.current.querySelector('svg')
+    //make svg into string serialize
+    const serializer = new XMLSerializer()
+    const source = serializer.serializeToString(svg)
+
+    //make canvas
+    const canvas = document.createElement('canvas')
+    const img = new Image();
+
+    //wait for image to load
+    img.onload = () => {
+      canvas.width = img.width
+      canvas.height = img.height
+      const ctx = canvas.getContext('2d')
+      ctx.fillStyle = back;
+      ctx.fillRect(0, 0, canvas.width, canvas.height)
+      ctx.drawImage(img, 0,0)
+
+       // download link
+      const link = document.createElement("a");
+      link.download = "qrcode.png";
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+    }
+      img.src = "data:image/svg+xml;base64," + btoa(source);
+
   }
 
 
@@ -48,7 +80,7 @@ const QrGenerator = () => {
             className='p-3 bg-green-300 rounded-full mb-5'>generate</button>
         </div>
         <div className="bg-white border-2 border-neutral-600 md:col-span-2 content-center md:rounded-r-xl ">
-            <p className='mx-20 md:mx-10 aspect-square bg-neutral-300 my-10 '>
+            <div ref = {qrRef} className='mx-20 md:mx-10 aspect-square bg-neutral-300 my-10 '>
                  {value && (
                     <QRCode
                         title={value}
@@ -59,8 +91,8 @@ const QrGenerator = () => {
                         style={{ width: "100%", height: "100%" }}
                     />
                 )}
-            </p>
-            <button
+            </div>
+            <button onClick={handleDownload}
             className='p-3 bg-green-300 rounded-full mb-5'>download</button>
         </div>
     </div>
