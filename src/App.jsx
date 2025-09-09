@@ -34,7 +34,8 @@ function App() {
       '/weather' : 'bg-bananamania',
       '/barcode' : 'bg-white',
       '/tictac' : 'bg-copper',
-      '/match' : 'bg-carnationpink'
+      '/match' : 'bg-carnationpink',
+      '/qr' : 'bg-bananamania'
 
 
     }
@@ -96,7 +97,7 @@ function Home() {
     <div className='bg-wisteria'><Link to="/quiz" className="text-zinc-950 text-lg px-5">Quiz</Link></div>
     <div className='bg-copper'><Link to="/tictac" className="text-zinc-950 text-lg px-5">Tic Tac Toe</Link></div>
     <div className='bg-carnationpink'><Link to="/match" className="text-zinc-950 text-lg px-5">Matching Cards</Link></div>
-    <div className='bg-blue-300'><Link to="/qr" className="text-zinc-950 text-lg px-5">QR Generator</Link></div>
+    <div className='bg-forest'><Link to="/qr" className="text-zinc-950 text-lg px-5">QR Generator</Link></div>
     </div>
   </div>)
 }

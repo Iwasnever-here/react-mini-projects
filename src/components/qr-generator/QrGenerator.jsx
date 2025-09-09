@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 import QRCode from 'react-qr-code';
 import './QrGenerator.css'
+import { MdDownload, MdLoop  } from "react-icons/md";
 
 
 
@@ -55,9 +56,9 @@ const QrGenerator = () => {
 
 
   return (
-    <div className='h-screen content-center  text-center p-10'>
-        <div className="max-w-300 bg-blue-500 mx-auto grid grid-cols-1 md:grid-cols-5 h-150 rounded-xl shadow-md shadow-neutral-600 rounded-xl">
-        <div className="bg-neutral-300 border-2 border-neutral-600 md:col-span-3 md:rounded-l-xl grey-section content-center">
+    <div className='h-screen content-center bg-bananamania text-center p-10'>
+        <div className="max-w-300 bg-white mx-auto grid grid-cols-1 md:grid-cols-5 md:h-150 h-300 rounded-xl shadow-lg rounded-xl">
+        <div className="md:col-span-3 md:rounded-l-xl grey-section content-center">
             <h1 className='mb-5 text-xl text-green-600 mt-5'>SETTINGS</h1>
             <p>link</p>
             <input type = 'text'
@@ -76,11 +77,18 @@ const QrGenerator = () => {
                    placeholder='enter hex e.g #FFFFFF'
             />
           <br />
-            <button onClick={handleGenerate}
-            className='p-3 bg-green-300 rounded-full mb-5'>generate</button>
+            <div className="flex justify-center mb-5">
+                <button 
+                  onClick={handleGenerate}
+                  className="flex items-center gap-2 px-5 py-3 my-5 bg-forest rounded-full shadow-lg text-white">
+                  <span>Generate</span>
+                  <MdLoop size={20} />
+                </button>
+              </div>
+
         </div>
-        <div className="bg-white border-2 border-neutral-600 md:col-span-2 content-center md:rounded-r-xl ">
-            <div ref = {qrRef} className='mx-20 md:mx-10 aspect-square bg-neutral-300 my-10 '>
+        <div className="bg-forest shadow shadow-lg md:col-span-2 content-center rounded-lg m-5   ">
+            <div ref = {qrRef} className='mx-20 md:mx-10 aspect-square bg-white my-10 '>
                  {value && (
                     <QRCode
                         title={value}
@@ -92,8 +100,14 @@ const QrGenerator = () => {
                     />
                 )}
             </div>
-            <button onClick={handleDownload}
-            className='p-3 bg-green-300 rounded-full mb-5'>download</button>
+              <div className="flex justify-center mb-5">
+                <button 
+                  onClick={handleDownload}
+                  className="flex items-center gap-2 px-5 py-3 bg-bananamania rounded-full shadow-lg">
+                  <span>Download</span>
+                  <MdDownload size={20} />
+                </button>
+              </div>
         </div>
     </div>
 
