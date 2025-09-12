@@ -8,7 +8,7 @@ react
 tailwindcss
 
 
-## 🚀 Features
+## 🚀 Components
 
 - pomodoro timer 
 - timer
@@ -16,7 +16,10 @@ tailwindcss
 - hangman
 - barcode scanner (allergy checker)
 - weather dashboard
-- quiz 
+- quiz
+- QR code generator
+- match card game
+- tik tak toe
 
 
 
