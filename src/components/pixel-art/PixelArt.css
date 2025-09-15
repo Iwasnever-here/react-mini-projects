@@ -1,0 +1,9 @@
+@import 'tailwindcss';
+
+.pixel-grid {
+    @apply grid 
+}
+
+.pixel-grid div {
+    @apply aspect-square border border-solid border-neutral-300
+}
