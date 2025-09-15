@@ -12,6 +12,7 @@ import Quiz from './components/Quiz/Quiz';
 import TicTac from './components/tic-tak/TicTac';
 import MatchGame from './components/match-game/MatchGame';
 import QrGenerator from './components/qr-generator/QrGenerator';
+import PixelArt from './components/pixel-art/PixelArt';
 
 
 
@@ -69,6 +70,7 @@ function App() {
         <Route path = "/tictac" element = {<TicTac />} />
         <Route path = "/match" element = {<MatchGame />} />
         <Route path = "/qr" element = {<QrGenerator />} />
+        <Route path = "/pixel" element = {<PixelArt />} />
         
       </Routes>
 
@@ -98,6 +100,7 @@ function Home() {
     <div className='bg-copper'><Link to="/tictac" className="text-zinc-950 text-lg px-5">Tic Tac Toe</Link></div>
     <div className='bg-carnationpink'><Link to="/match" className="text-zinc-950 text-lg px-5">Matching Cards</Link></div>
     <div className='bg-forest'><Link to="/qr" className="text-zinc-950 text-lg px-5">QR Generator</Link></div>
+    <div className='bg-forest'><Link to="/pixel" className="text-zinc-950 text-lg px-5">Pixel Paint</Link></div>
     </div>
   </div>)
 }
