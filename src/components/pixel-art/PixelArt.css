@@ -1,9 +1,22 @@
 @import 'tailwindcss';
 
+
+@theme {
+    --color-yonder: #A2ADD0;
+}
+
 .pixel-grid {
-    @apply grid 
+    @apply grid border
 }
 
 .pixel-grid div {
     @apply aspect-square border border-solid border-neutral-300
+}
+
+
+.colors {
+    @apply grid grid-cols-14 max-w-100 ml-15 my-5
+}
+.colors div {
+    @apply aspect-square border m-[1px]
 }
