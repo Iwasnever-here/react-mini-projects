@@ -23,27 +23,35 @@ const PixelArt = () => {
       { id: 11, hex: "#324AB2" },
       { id: 12, hex: "#1164B4" },
       { id: 13, hex: "#18A7B5" },
-      { id: 14, hex: "#FFFFFF" },
-      { id: 15, hex: "#C5D0E6" },
-      { id: 16, hex: "#CB4154" },
-      { id: 17, hex: "#FEFE22" },
-      { id: 18, hex: "#B2EC5D" },
-      { id: 19, hex: "#1FCECB" },
-      { id: 20, hex: "#1164B4" },
-      { id: 21, hex: "#FF48D0" },
-      { id: 22, hex: "#F8D568" },
-      { id: 23, hex: "#71BC78" },
-      { id: 24, hex: "#ACE5EE" },
-      { id: 25, hex: "#CDA4DE" },
-      { id: 26, hex: "#FFA089" },
-      { id: 27, hex: "#FF7F49" },
-      { id: 28, hex: "#B4674D" },
-    ].sort(() => Math.random() - 0.5)
+      { id: 14, hex: "#B4674D" },
+      { id: 15, hex: "#FFFFFF" },
+      { id: 16, hex: "#C5D0E6" },
+      { id: 17, hex: "#CB4154" },
+      { id: 18, hex: "#FEFE22" },
+      { id: 19, hex: "#B2EC5D" },
+      { id: 20, hex: "#1FCECB" },
+      { id: 21, hex: "#1164B4" },
+      { id: 22, hex: "#FF48D0" },
+      { id: 23, hex: "#F8D568" },
+      { id: 24, hex: "#71BC78" },
+      { id: 25, hex: "#ACE5EE" },
+      { id: 26, hex: "#CDA4DE" },
+      { id: 27, hex: "#FFA089" },
+      { id: 28, hex: "#FF7F49" },
+    ]
+  );
+
+  const [tools] = useState(
+    [
+      { name: 'eraser', hex: "#fffff" },
+      {name: 'eyedropper', hex: '#ffffff'}
+    ]
   );
     // const for color selected
     const [colorUsing, setColorUsing] = useState('#ffffff')
     // const for eraser
     const [usingEraser, setUsingEraser] =useState(false)
+    const [usingEyeDropper, setUsingEyeDropper] = useState(false)
     // const for selected tile
     const [selectedPixel, setSelectedPixel] = useState('')
     
@@ -60,17 +68,32 @@ const PixelArt = () => {
     // when eraser is selected onlt white will be placed, until it is clicked again - and original colour is back
     // when eye dropper tool is selected it should take the hex from the clicked square - then unselect itself after color is grabbed and set that color as being used 
     
-    
-    function handleClick (i) {
+    function toolCLick (hex, name) {
+      if (name == 'eraser'){
+        if (!usingEraser)
+          setUsingEraser(true)
+        else
+          setUsingEraser(false)
+      }
+      else if (name == 'eyedropper'){
+        setUsingEyeDropper(true)
+      }
+    }
+
+    function handleClick (i, color) {
        const newGrid = grid.slice()
-      if (!usingEraser) {
+      if (!usingEraser && !usingEyeDropper) {
         newGrid[i] = colorUsing
         console.log(grid[i])
        
       }
-      else {
+      else if (usingEraser) {
         newGrid[i] = '#FFFFFF'
         console.log(grid[i])
+      }
+      else if (usingEyeDropper) {
+        setColorUsing(color)
+        setUsingEyeDropper(false)
       }
       setGrid(newGrid)
     }
@@ -81,21 +104,32 @@ const PixelArt = () => {
     
     <div className='max-w-200 m-auto p-2 bg-yonder'>
     <div className='bg-violetblue mb-8 text-white'>Untitled Paint</div>
-    <div className='pixel-grid ml-25 mr-6'
+    <div className='flex gap-6 '>
+    <div className='flex flex-col gap-4'>
+
+    {tools.map((tool, i) => (
+      <div key={i} onClick={() => toolCLick(tool.hex, tool.name)}>
+        {tool.name}
+      </div>
+    ))}
+    </div>
+
+    <div className='flex-1 pixel-grid  mr-6'
     style={{
       gridTemplateColumns: `repeat(${gridSize}, minmax(0, 1fr))`,
     }}
     >
     {grid.map((tile, i) => (
       <div key={i}  style={{ backgroundColor: tile }}
-      onClick={()=> handleClick(i)}/>
+      onClick={()=> handleClick(i, tile)}/>
 
     ))}
     
     </div>
+    </div>
     <div className='colors'>
       {colors.map((tile, i) => (
-      <div key={i}  style={{ backgroundColor: tile.hex }}
+      <div key={i} gitle={tile.id} style={{ backgroundColor: tile.hex }}
       onClick={() => setColorUsing(tile.hex)}/>
 
     ))}
