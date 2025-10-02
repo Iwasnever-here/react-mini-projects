@@ -1,4 +1,9 @@
 import {useEffect, useState} from 'react'
+import { FaRegWindowMaximize, FaWindowMinimize  } from "react-icons/fa";
+import { IoMdClose } from "react-icons/io";
+import { RxEraser, RxPencil1  } from "react-icons/rx";
+import { ImEyedropper } from "react-icons/im";
+
 import './PixelArt.css'
 const PixelArt = () => {
 
@@ -43,12 +48,14 @@ const PixelArt = () => {
 
   const [tools] = useState(
     [
-      { name: 'eraser', hex: "#fffff" },
-      {name: 'eyedropper', hex: '#ffffff'}
+      { name: 'eraser', hex: "#fffff", icon: <RxEraser /> },
+      {name: 'eyedropper', hex: '#ffffff', icon: <ImEyedropper />},
+      {name: 'pen' , icon: <RxPencil1 />}
     ]
   );
     // const for color selected
-    const [colorUsing, setColorUsing] = useState('#ffffff')
+    // need to keep track of last used color aswell
+    const [colorUsing, setColorUsing] = useState('#000000')
     // const for eraser
     const [usingEraser, setUsingEraser] =useState(false)
     const [usingEyeDropper, setUsingEyeDropper] = useState(false)
@@ -78,6 +85,11 @@ const PixelArt = () => {
       else if (name == 'eyedropper'){
         setUsingEyeDropper(true)
       }
+      else if (name == 'pen'){
+        setUsingEraser(false)
+        setUsingEyeDropper(false)
+
+      }
     }
 
     function handleClick (i, color) {
@@ -103,17 +115,25 @@ const PixelArt = () => {
     <div className='h-screen content-center'>
     
     <div className='max-w-200 m-auto p-2 bg-yonder'>
-    <div className='bg-violetblue mb-8 text-white'>Untitled Paint</div>
+    <div className='icons-top flex bg-violetblue mb-8 text-white p-1'>
+      Untitled Paint
+    
+    <div className='ml-auto'><FaWindowMinimize /></div>
+    <div className='ml-1 mr-1'><FaRegWindowMaximize /></div>
+    <div className='bg-red-500'><IoMdClose /></div>
+
+    </div>
     <div className='flex gap-6 '>
     <div className='flex flex-col gap-4'>
 
     {tools.map((tool, i) => (
       <div key={i} onClick={() => toolCLick(tool.hex, tool.name)}>
-        {tool.name}
+        {tool.icon}
       </div>
     ))}
     </div>
 
+    
     <div className='flex-1 pixel-grid  mr-6'
     style={{
       gridTemplateColumns: `repeat(${gridSize}, minmax(0, 1fr))`,
@@ -127,12 +147,20 @@ const PixelArt = () => {
     
     </div>
     </div>
-    <div className='colors'>
+    <div className='flex'>
+      <div className="bg-white w-15 h-13 flex mt-5 mr-1 items-center justify-center">
+  <div className="w-6 h-5 bg-red-400 z-5 -mr-2 -mt-2 border border-white"></div>
+  <div className="w-6 h-5 bg-blue-400 z-2 -mb-2 border border-white"></div>
+</div>
+
+    <div className='colors flex-shrink-0'>
+      
       {colors.map((tile, i) => (
       <div key={i} gitle={tile.id} style={{ backgroundColor: tile.hex }}
       onClick={() => setColorUsing(tile.hex)}/>
 
     ))}
+    </div>
     </div>
     </div>
     </div>

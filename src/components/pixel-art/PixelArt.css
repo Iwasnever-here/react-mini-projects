@@ -15,8 +15,12 @@
 
 
 .colors {
-    @apply grid grid-cols-14 max-w-100 ml-15 my-5
+    @apply grid grid-cols-14 max-w-100  my-5
 }
 .colors div {
-    @apply aspect-square border m-[1px]
+    @apply aspect-square border m-[1px] w-6
+}
+
+.icons-top div {
+  @apply w-7 aspect-square border border-white flex items-center justify-center rounded-sm
 }
