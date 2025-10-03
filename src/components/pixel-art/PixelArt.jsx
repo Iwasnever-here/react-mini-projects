@@ -54,6 +54,7 @@ const PixelArt = () => {
     ]
   );
     // const for color selected
+    const [lastUsing, setLastUsing] = useState('#000000')
     // need to keep track of last used color aswell
     const [colorUsing, setColorUsing] = useState('#000000')
     // const for eraser
@@ -120,7 +121,7 @@ const PixelArt = () => {
     
     <div className='ml-auto'><FaWindowMinimize /></div>
     <div className='ml-1 mr-1'><FaRegWindowMaximize /></div>
-    <div className='bg-red-500'><IoMdClose /></div>
+    <div className=''><IoMdClose /></div>
 
     </div>
     <div className='flex gap-6 '>
@@ -149,15 +150,16 @@ const PixelArt = () => {
     </div>
     <div className='flex'>
       <div className="bg-white w-15 h-13 flex mt-5 mr-1 items-center justify-center">
-  <div className="w-6 h-5 bg-red-400 z-5 -mr-2 -mt-2 border border-white"></div>
-  <div className="w-6 h-5 bg-blue-400 z-2 -mb-2 border border-white"></div>
+  <div className="w-6 h-5 z-5 -mr-2 -mt-2 border border-white" style = {{backgroundColor: colorUsing}}></div>
+  <div className="w-6 h-5 z-2 -mb-2 border border-white" style = {{backgroundColor: lastUsing}}
+  onClick = {() => {setLastUsing(colorUsing) ; setColorUsing(lastUsing)}}></div>
 </div>
 
     <div className='colors flex-shrink-0'>
       
       {colors.map((tile, i) => (
       <div key={i} gitle={tile.id} style={{ backgroundColor: tile.hex }}
-      onClick={() => setColorUsing(tile.hex)}/>
+      onClick={() => {setLastUsing(colorUsing); setColorUsing(tile.hex) }}/>
 
     ))}
     </div>

@@ -22,5 +22,5 @@
 }
 
 .icons-top div {
-  @apply w-7 aspect-square border border-white flex items-center justify-center rounded-sm
+  @apply w-6 text-black flex items-center justify-center bg-yonder
 }
