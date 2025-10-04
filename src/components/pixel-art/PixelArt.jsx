@@ -58,11 +58,11 @@ const PixelArt = () => {
     // need to keep track of last used color aswell
     const [colorUsing, setColorUsing] = useState('#000000')
     // const for eraser
-    const [usingEraser, setUsingEraser] =useState(false)
-    const [usingEyeDropper, setUsingEyeDropper] = useState(false)
+    
     // const for selected tile
     const [selectedPixel, setSelectedPixel] = useState('')
-    
+    const [selectedTool, setSelectedTool] = useState('pen'); // default tool
+
     // maybe array for color tiles at bottom - use mechanics from the crayola 
     
 
@@ -77,41 +77,31 @@ const PixelArt = () => {
     // when eye dropper tool is selected it should take the hex from the clicked square - then unselect itself after color is grabbed and set that color as being used 
     
     function toolCLick (hex, name) {
-      if (name == 'eraser'){
-        if (!usingEraser)
-          setUsingEraser(true)
-        else
-          setUsingEraser(false)
-      }
-      else if (name == 'eyedropper'){
-        setUsingEyeDropper(true)
-      }
-      else if (name == 'pen'){
-        setUsingEraser(false)
-        setUsingEyeDropper(false)
-
-      }
+      if (selectedTool === name) {
+        setSelectedTool('pen')}
+        else {
+          setSelectedTool(name)
+        }
+      
     }
 
     function handleClick (i, color) {
        const newGrid = grid.slice()
-      if (!usingEraser && !usingEyeDropper) {
-        newGrid[i] = colorUsing
-        console.log(grid[i])
-       
-      }
-      else if (usingEraser) {
-        newGrid[i] = '#FFFFFF'
-        console.log(grid[i])
-      }
-      else if (usingEyeDropper) {
+      if (selectedTool === 'eraser') {
+        newGrid[i] = '#ffffff'
+      } 
+      else if ( selectedTool === 'eyedropper'){
         setColorUsing(color)
-        setUsingEyeDropper(false)
+        setSelectedTool('pen')
+      }
+      else {
+        newGrid[i] = colorUsing
       }
       setGrid(newGrid)
     }
 
-
+  
+// when tool clicked border and bg-change until unselected 
   return (
     <div className='h-screen content-center'>
     
@@ -124,12 +114,13 @@ const PixelArt = () => {
     <div className=''><IoMdClose /></div>
 
     </div>
-    <div className='flex gap-6 '>
-    <div className='flex flex-col gap-4'>
+    <div className='flex gap-3 '>
+    <div className='grid grid-cols-2 gap-1 h-20 text-xl'>
 
     {tools.map((tool, i) => (
-      <div key={i} onClick={() => toolCLick(tool.hex, tool.name)}>
+      <div key={i} className={`p-2 cursor-pointer ${selectedTool === tool.name ? 'bg-white border border-black' : ''}`} onClick={() => toolCLick(tool.hex, tool.name)}>
         {tool.icon}
+        
       </div>
     ))}
     </div>
