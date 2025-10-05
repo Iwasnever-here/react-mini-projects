@@ -1,0 +1,94 @@
+.adahack-container {
+  height: 100%;
+  background-color: #C1CB79;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.top-section {
+  display: grid;
+  grid-template-columns: 37% 60.5%;
+  gap: 20px;
+  height: 50%;
+}
+
+.pie-card, .line-card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.pie-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pie-link {
+  background-color: #F7EF7D;
+  border: 1px solid #737373;
+  border-radius: 16px;
+  height: 80px;
+  width: 75%;
+  max-width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.bottom-section {
+  display: grid;
+  grid-template-columns: 32.1% 32.1% 31%;
+  gap: 20px;
+  height: 50%;
+  padding-bottom: 16px;
+}
+
+.doughnut-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  text-align: center;
+}
+
+.doughnut-card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cashflow-card {
+  background-color: #F7EF7D;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.image-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 28px;
+  text-align: center;
+}
+
+.yellow-link {
+  background-color: #F7EF7D;
+  border-radius: 12px;
+  height: 80px;
+  width: 280px;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
