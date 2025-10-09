@@ -105,20 +105,20 @@ const PixelArt = () => {
   return (
     <div className='h-screen content-center'>
     
-    <div className='max-w-200 m-auto p-2 bg-yonder'>
-    <div className='icons-top flex bg-violetblue mb-8 text-white p-1'>
+    <div className='max-w-200 m-auto p-2 bg-yonder shadow shadow-black shadow-lg'>
+    <div className='icons-top flex bg-violetblue mb-8 text-white p-1 shadow shadow-black shadow-sm'>
       Untitled Paint
     
-    <div className='ml-auto'><FaWindowMinimize /></div>
-    <div className='ml-1 mr-1'><FaRegWindowMaximize /></div>
-    <div className=''><IoMdClose /></div>
+    <div className='ml-auto  shadow shadow-black shadow-sm'><FaWindowMinimize /></div>
+    <div className='ml-1 mr-1 shadow shadow-black shadow-sm'><FaRegWindowMaximize /></div>
+    <div className=' shadow shadow-black shadow-sm'><IoMdClose /></div>
 
     </div>
     <div className='flex gap-3 '>
-    <div className='grid grid-cols-2 gap-1 h-20 text-xl'>
+    <div className='grid grid-cols-2 h-20 text-xl'>
 
     {tools.map((tool, i) => (
-      <div key={i} className={`p-2 cursor-pointer ${selectedTool === tool.name ? 'bg-white border border-black' : ''}`} onClick={() => toolCLick(tool.hex, tool.name)}>
+      <div key={i} className={`p-2 cursor-pointer ${selectedTool === tool.name ? ' shadow shadow-white shadow-sm bg-white  border-l-3 border-t-3 border-l-1 border-b-1' : 'border-2 border-r-white border-t-white border-r-black border-b-black'}`} onClick={() => toolCLick(tool.hex, tool.name)}>
         {tool.icon}
         
       </div>
@@ -140,16 +140,16 @@ const PixelArt = () => {
     </div>
     </div>
     <div className='flex'>
-      <div className="bg-white w-15 h-13 flex mt-5 mr-1 items-center justify-center">
-  <div className="w-6 h-5 z-5 -mr-2 -mt-2 border border-white" style = {{backgroundColor: colorUsing}}></div>
-  <div className="w-6 h-5 z-2 -mb-2 border border-white" style = {{backgroundColor: lastUsing}}
+      <div className=" border-t-2 border-l-2 shadow shadow-white shadow-sm bg-white w-15 h-13 flex mt-5 mr-1 items-center justify-center">
+  <div className=" shadow shadow-black shadow-sm w-6 h-5 z-5 -mr-2 -mt-2 border border-white" style = {{backgroundColor: colorUsing}}></div>
+  <div className=" shadow shadow-black shadow-sm w-6 h-5 z-2 -mb-2 border border-white" style = {{backgroundColor: lastUsing}}
   onClick = {() => {setLastUsing(colorUsing) ; setColorUsing(lastUsing)}}></div>
 </div>
 
     <div className='colors flex-shrink-0'>
       
       {colors.map((tile, i) => (
-      <div key={i} gitle={tile.id} style={{ backgroundColor: tile.hex }}
+      <div key={i} title={tile.hex} className='shadow shadow-sm shadow-white'style={{ backgroundColor: tile.hex }}
       onClick={() => {setLastUsing(colorUsing); setColorUsing(tile.hex) }}/>
 
     ))}

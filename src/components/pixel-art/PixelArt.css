@@ -18,7 +18,7 @@
     @apply grid grid-cols-14 max-w-100  my-5
 }
 .colors div {
-    @apply aspect-square border m-[1px] w-6
+    @apply aspect-square border-l-2 border-t-2 m-[1px] w-6
 }
 
 .icons-top div {
