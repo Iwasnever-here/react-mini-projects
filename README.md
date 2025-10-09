@@ -20,6 +20,8 @@ tailwindcss
 - QR code generator
 - match card game
 - tik tak toe
+- pixel drawing
+- finace management dashboard
 
 
 
