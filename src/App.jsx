@@ -13,7 +13,7 @@ import TicTac from './components/tic-tak/TicTac';
 import MatchGame from './components/match-game/MatchGame';
 import QrGenerator from './components/qr-generator/QrGenerator';
 import PixelArt from './components/pixel-art/PixelArt';
-import Adahack from './components/Adahack/adahack';
+import PinBoard from './components/pin-board/PinBoard';
 
 
 
@@ -38,7 +38,7 @@ function App() {
       '/tictac' : 'bg-copper',
       '/match' : 'bg-carnationpink',
       '/qr' : 'bg-bananamania',
-      '/adahack' : 'bg-bananamania'
+      '/pinboard' : 'bg-gray-900'
 
 
     }
@@ -73,7 +73,7 @@ function App() {
         <Route path = "/match" element = {<MatchGame />} />
         <Route path = "/qr" element = {<QrGenerator />} />
         <Route path = "/pixel" element = {<PixelArt />} />
-        <Route path = "/adahack" element = {<Adahack />} />
+        <Route path = "/pinboard" element = {<PinBoard />} />
       </Routes>
 
 
@@ -103,7 +103,7 @@ function Home() {
     <div className='bg-carnationpink'><Link to="/match" className="text-zinc-950 text-lg px-5">Matching Cards</Link></div>
     <div className='bg-forest'><Link to="/qr" className="text-zinc-950 text-lg px-5">QR Generator</Link></div>
     <div className='bg-cornflower'><Link to="/pixel" className="text-zinc-950 text-lg px-5">Pixel Paint</Link></div>
-    <div className='bg-[#C1CB79]'><Link to="/adahack" className="text-zinc-950 text-lg px-5">adahack</Link></div>
+    <div className='bg-[#C1CB79]'><Link to="/pinboard" className="text-zinc-950 text-lg px-5">pin board</Link></div>
     </div>
   </div>)
 }
