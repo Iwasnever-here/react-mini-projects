@@ -21,7 +21,12 @@ tailwindcss
 - match card game
 - tik tak toe
 - pixel drawing
-- finace management dashboard
+- virtual pinboard
+
+### coming soon ###
+- currency converter
+- text editor
+- 
 
 
 
